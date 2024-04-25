@@ -1,0 +1,6 @@
+@ConDigest.API_HostAddress = http://localhost:5077
+
+GET {{ConDigest.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
