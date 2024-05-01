@@ -7,9 +7,9 @@ namespace ConDigest.API.Models.Domain
     {
         public Guid Id { get; set; }
 
-        public string? CouponCode { get; set; }
+        public string CouponCode { get; set; }
 
-        public string? CouponName { get; set; }
+        public string CouponName { get; set; }
 
         [Column(TypeName = "datetime")]
         public DateTime FromDate { get; set; }
