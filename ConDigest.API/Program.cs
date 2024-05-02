@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ConDigestDBContext>(options =>
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 builder.Services.AddScoped<ICouponRepository, CouponRepository>();
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
 
 var app = builder.Build();
 

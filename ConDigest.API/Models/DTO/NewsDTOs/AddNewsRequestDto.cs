@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConDigest.API.Models.Domain
+namespace ConDigest.API.Models.DTO.NewsDTOs
 {
-    public class News
+    public class AddNewsRequestDto
     {
-        public Guid Id { get; set; }
-
         public string Title { get; set; }
 
         public string? Content { get; set; }
