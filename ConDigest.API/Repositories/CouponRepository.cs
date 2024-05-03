@@ -33,7 +33,7 @@ namespace ConDigest.API.Repositories
         }
 
         public async Task<List<Coupon>> GetAllCouponsAsync(string? filterOn = null, string? filterQuery = null,
-            string? sortBy = null, bool isAscending = true, int pageSize = 1, int pageNumber = 1000)
+            string? sortBy = null, bool isAscending = true, int pageSize = 1000, int pageNumber = 1)
         {
             var coupons = _context.Coupons.AsQueryable();
 
@@ -72,10 +72,12 @@ namespace ConDigest.API.Repositories
             }
 
             //Pagination
-            var skipNumber = (pageNumber - 1) * pageSize;
-            coupons = coupons.Skip(skipNumber).Take(pageSize);
+            //var skipNumber = (pageNumber - 1) * pageSize;
+            //coupons = coupons.Skip(skipNumber).Take(pageSize);
 
-            return await coupons.ToListAsync();
+            var skipResults = (pageNumber - 1) * pageSize;
+
+            return await coupons.Skip(skipResults).Take(pageSize).ToListAsync();
         }
 
         public async Task<Coupon?> GetCouponByIdAsync(Guid id)

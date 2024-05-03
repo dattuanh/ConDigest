@@ -23,7 +23,7 @@ namespace ConDigest.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllNewsAsync([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
-            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageSize = 1, [FromQuery] int pageNumber = 1000)
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageSize = 1000, [FromQuery] int pageNumber = 1)
         {
             var news = await _newsRepository.GetAllNewsAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageSize, pageNumber);
             

@@ -31,7 +31,7 @@ namespace ConDigest.API.Repositories
             return existingNews;
         }
 
-        public async Task<List<News>> GetAllNewsAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true, int pageSize = 1, int pageNumber = 1000)
+        public async Task<List<News>> GetAllNewsAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true, int pageSize = 1000, int pageNumber = 1)
         {
             var news = _context.News.AsQueryable();
             //filter

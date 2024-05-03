@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ConDigest.API.Data;
 using ConDigest.API.Models.Domain;
 using ConDigest.API.Models.DTO.CouponDTOs;
 using ConDigest.API.Repositories;
@@ -12,20 +13,21 @@ namespace ConDigest.API.Controllers
     public class CouponController : ControllerBase
     {
         private readonly ICouponRepository _couponRepository;
-
+        private readonly ConDigestDBContext _context;
         public readonly IMapper _mapper;
-        public CouponController(ICouponRepository couponRepository, IMapper mapper)
+        public CouponController(ICouponRepository couponRepository, IMapper mapper, ConDigestDBContext conDigestDBContext)
         {
             _couponRepository = couponRepository;
             _mapper = mapper;
+            _context = conDigestDBContext;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllCoupons([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
-            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageSize = 1, [FromQuery] int pageNumber = 1000)
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageSize = 1000, [FromQuery] int pageNumber = 1)
         {
             var coupons = await _couponRepository.GetAllCouponsAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageSize, pageNumber);
-            
+            //var coupon = _context.Coupons.ToList();
             return Ok(_mapper.Map<List<CouponDto>>(coupons));
         }
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConDigest.API.Models.Domain
 {
@@ -12,6 +14,7 @@ namespace ConDigest.API.Models.Domain
 
         public Guid NewsId { get; set; }
 
+        [NotMapped]
         public IFormFile File { get; set; }
 
         public string FileExtension { get; set; }
