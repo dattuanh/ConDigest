@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ConDigest.API.Models.Domain;
 
-namespace ConDigest.API.Models.Domain
+namespace ConDigest.API.Models.DTO.NewsImageDTOs
 {
-    public class NewsImage
+    public class NewsImageUploadRequestDto
     {
         public Guid Id { get; set; }
 

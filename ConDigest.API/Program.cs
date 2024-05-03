@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
+builder.Services.AddScoped<INewsImageRepository, NewsImageRepository>();
 
 var app = builder.Build();
 

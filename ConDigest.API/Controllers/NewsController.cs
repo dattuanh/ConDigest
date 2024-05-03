@@ -25,7 +25,7 @@ namespace ConDigest.API.Controllers
         public async Task<IActionResult> GetAllNewsAsync([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageSize = 1, [FromQuery] int pageNumber = 1000)
         {
-            var news = await _newsRepository.GetAllNewsAsync(filterOn, filterQuery, sortBy, isAscending, pageSize, pageNumber);
+            var news = await _newsRepository.GetAllNewsAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageSize, pageNumber);
             
             return Ok(_mapper.Map<List<NewsDto>>(news));
         }
