@@ -1,4 +1,6 @@
 using ConDigest.API.Data;
+using ConDigest.API.Mappings;
+using ConDigest.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ConDigestDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConDigestDbContext")));
+
+builder.Services.AddScoped<IOrderRepository, SQLOrderRepository>();
+builder.Services.AddScoped<IPaymentRepository, SQLPaymentRepository>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperprofiles));
 
 var app = builder.Build();
 
