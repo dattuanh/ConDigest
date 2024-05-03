@@ -1,4 +1,5 @@
-﻿using ConDigest.API.Models.DTO.NewsImageDTOs;
+﻿using ConDigest.API.Models.Domain;
+using ConDigest.API.Models.DTO.NewsImageDTOs;
 using ConDigest.API.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,21 +25,19 @@ namespace ConDigest.API.Controllers
 
             if (ModelState.IsValid)
             {
-                // convert DTO to Domain model
-                //var imageDomainModel = new Image
-                //{
-                //    File = request.File,
-                //    FileExtension = Path.GetExtension(request.File.FileName),
-                //    FileSizeInBytes = request.File.Length,
-                //    FileName = request.FileName,
-                //    FileDescription = request.FileDescription,
-                //};
+                var newsImageDomainModel = new NewsImage
+                {
+                    NewsImageName = request.NewsImageName,
+                    NewsImageDescription = request.NewsImageDescription,
+                    NewsId = request.NewsId,
+                    File = request.File,
+                    FileExtension = Path.GetExtension(request.File.FileName),
+                    FileSizeInBytes = request.File.Length,
+                };
 
+                await imageRepository.UploadNewImage(newsImageDomainModel);
 
-                // User repository to upload image
-                //await imageRepository.Upload(imageDomainModel);
-
-                //return Ok(imageDomainModel);
+                return Ok(newsImageDomainModel);
             }
 
             return BadRequest(ModelState);

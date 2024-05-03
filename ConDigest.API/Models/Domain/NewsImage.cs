@@ -18,6 +18,7 @@ namespace ConDigest.API.Models.Domain
 
         public long FileSizeInBytes { get; set; }
 
+        public string FilePath { get; set; }
         // Navigation property
         public News News { get; set; }
     }
